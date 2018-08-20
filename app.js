@@ -4,6 +4,14 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+//
+// https://www.abeautifulsite.net/determining-your-apps-base-directory-in-nodejs
+global.__basedir = __dirname;
+//
+const config = require('./knexfile');
+const knex = require('knex')(config);
+const sql = knex('data').toString();
+
 // Middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json());

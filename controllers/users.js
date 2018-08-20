@@ -17,6 +17,20 @@ module.exports = {
         //
         console.log('UsersController.secret() called!');
         res.send({'function':'secret'});
+    },
+    test: async( req, res, next ) => {
+        // generate some data.
+        console.log('UsersController.test() called!');
+        //
+        const dbfile = __basedir + '/data.sqlite';
+        var knex = require('knex')({
+            client: 'sqlite3',
+            connection: { filename: dbfile}
+        });
+        knex('sessions').insert({id: '12345'});
+
+
+        res.send({'function':'test'});
     }
 
 }

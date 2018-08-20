@@ -13,4 +13,7 @@ router.route('/signin')
 router.route('/secret')
     .post(UsersController.secret);
 
+router.route('/test')
+    .post(UsersController.test);
+    
 module.exports = router;
